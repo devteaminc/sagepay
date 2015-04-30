@@ -1,0 +1,13 @@
+{
+    "name": "devteaminc/sagepay",
+    "description": "Unofficial integration package for Sagepay",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rob Mills",
+            "email": "robjmills@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
