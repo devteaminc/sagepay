@@ -96,7 +96,7 @@ class SagepayCommon
         curl_setopt($curlSession, CURLOPT_URL, $url);
         curl_setopt($curlSession, CURLOPT_HEADER, 0);
         curl_setopt($curlSession, CURLOPT_POST, 1);
-        curl_setopt($curlSession, CURLOPT_POSTFIELDS, SagepayUtil::arrayToQueryString($data));
+        curl_setopt($curlSession, CURLOPT_POSTFIELDS, SagepayUtil::arrayToQueryString($data,'&',true));
         curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curlSession, CURLOPT_TIMEOUT, $ttl);
         curl_setopt($curlSession, CURLOPT_SSL_VERIFYHOST, 2);
