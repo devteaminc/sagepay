@@ -322,6 +322,21 @@ class SagepayBasket
     }
 
     /**
+     * Calculate total value of discounts
+     * @return int
+     */
+    private function getDiscountAmount()
+    {
+        $discountAmount = 0;
+        if( is_array($this->_discounts) && count($this->_discounts) > 0){
+            foreach($this->_discounts as $discount){
+                $discountAmount += $discount['fixed'];
+            }
+        }
+        return $discountAmount;
+    }
+
+    /**
      * Get list of discounts
      *
      * @return array
@@ -533,6 +548,7 @@ class SagepayBasket
         {
             $amount += $item->getTotalGrossAmount();
         }
+        $amount -= $this->getDiscountAmount();
         return $amount;
     }
 
