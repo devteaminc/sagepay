@@ -69,6 +69,12 @@ class SagepayBasket
     private $_discounts = array();
 
     /**
+     * Value used to check basket calculation matches Total
+     * @var float
+     */
+    private $_overrideAmount = null;
+
+    /**
      * The ship customer ID
      *
      * @var string
@@ -551,6 +557,26 @@ class SagepayBasket
         $amount -= $this->getDiscountAmount();
         return $amount;
     }
+
+
+    /**
+     * Set correct Total Amount
+     * @param $amount
+     */
+    public function setOverrideAmount($amount)
+    {
+        $this->_overrideAmount = $amount;
+    }
+
+    /**
+     * Set correct Total Amount
+     * @return float
+     */
+    public function getOverrideAmount()
+    {
+        return $this->_overrideAmount;
+    }
+
 
     /**
      * Return xml structured or serialized string depends on $asXml

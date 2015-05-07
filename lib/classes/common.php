@@ -224,7 +224,18 @@ class SagepayCommon
         {
             $query['Basket'] = $basket->exportAsXml(false);
         }
-        
+
+        /**
+         * This code will catch instances where the basket has been wrongly calculated according
+         * to the host shopping basket. This fallback stops an incorrect basket being sent to
+         * Sagepay and guarantees the correct total is paid according to the host basket
+         */
+        if ( $basket->getOverrideAmount() !== null ) {
+            $query['BasketXML'] = "";
+            $query['Basket'] = "";
+            $query['Amount'] = number_format($basket->getOverrideAmount(), 2, '.', '');
+        }
+
         if (count($settings->getSurcharges()) > 0)
         {
             $surcharges = new SagepaySurcharge();
