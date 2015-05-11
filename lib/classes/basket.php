@@ -280,7 +280,7 @@ class SagepayBasket
     /**
      * Get delivery net amount
      *
-     * @return type
+     * @return float
      */
     public function getDeliveryNetAmount()
     {
@@ -597,7 +597,7 @@ class SagepayBasket
     /**
      * Export as string with Sagepay specific format
      *
-     * @return type
+     * @return string
      */
     private function _serialize()
     {
