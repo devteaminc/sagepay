@@ -218,7 +218,15 @@ class SagepayCommon
         // Check if we need to encode cart.
         if (!$settings->basketAsXmlDisabled())
         {
-            $query['BasketXML'] = $basket->exportAsXml();
+            /**
+             * need to make sure the basket XML is less than 20000 characters
+             * if it's too long we can't send it
+             */
+            $basketExport = $basket->exportAsXml();
+            if(strlen($basketExport) > 20000){
+                $basketExport = "";
+            }
+            $query['BasketXML'] = $basketExport;
         } 
         else
         {
